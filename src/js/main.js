@@ -1,6 +1,8 @@
 import ProductData from "./ProductData.mjs";
 import ProductList from "./ProductList.mjs";
 import Alert from "./Alert.js";
+import { loadHeaderFooter } from "./utils.mjs";
+
 
 document.addEventListener("DOMContentLoaded", () => {
   new Alert();
