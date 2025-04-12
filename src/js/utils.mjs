@@ -2,8 +2,6 @@ export function qs(selector, parent = document) {
   return parent.querySelector(selector);
 }
 
-
-
 export function getLocalStorage(key) {
   return JSON.parse(localStorage.getItem(key));
 }
@@ -34,7 +32,6 @@ export function renderListWithTemplate(
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
 
-
 export function setClick(selector, callback) {
   qs(selector).addEventListener("touchend", (event) => {
     event.preventDefault();
@@ -42,6 +39,7 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener("click", callback);
 }
+
 export function renderWithTemplate(template, parentElement, data, callback) {
   parentElement.innerHTML = template;
   if (callback) {
@@ -56,8 +54,9 @@ export async function loadTemplate(path) {
 }
 
 export async function loadHeaderFooter() {
-  const headerTemplate = await loadTemplate("../partials/header.html");
-  const footerTemplate = await loadTemplate("../partials/footer.html");
+  // Ruta relativa para que funcione correctamente con Live Server
+  const headerTemplate = await loadTemplate("../public/partials/header.html");
+  const footerTemplate = await loadTemplate("../public/partials/footer.html");
 
   const headerElement = document.querySelector("#main-header");
   const footerElement = document.querySelector("#main-footer");
@@ -65,4 +64,3 @@ export async function loadHeaderFooter() {
   renderWithTemplate(headerTemplate, headerElement);
   renderWithTemplate(footerTemplate, footerElement);
 }
-
